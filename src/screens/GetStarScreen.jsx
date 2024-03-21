@@ -2,6 +2,9 @@
 // import { Image, View } from "react-native";
 // import { Text } from "react-native-paper";
 
+// import { Button } from "react-native-paper";
+// import { View } from "react-native-web";
+
 // export default function GetStarScreen() {
 //     const [stars, setStars] = useState([]);
 
@@ -36,49 +39,50 @@
 //     </View>
 //     );
 // }
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+
+import { useState, useEffect } from "react";
+import { Text, Button } from 'react-native-paper';
 import axios from 'axios';
+import { View } from "react-native";
 
-const GetStarScreen = () => {
-    const [starUrl, setStarUrl] = useState('');
+const API_KEY = "sdo8bt1NUhNm1Al8F3vT54x2mcRdb3jZ8Peyed6n";
 
-    const fetchStarUrl = async () => {
-        try {
-            const response = await axios.get('https://api.nasa.gov/planetary/apod?api_key=YfEK8ygDQACML7PWrzTwjesmJ1g0nkbNbScVdPNA');
-            const imageUrl = response.data.url;
-            setStarUrl(imageUrl);
-        } catch (error) {
-            console.error('Erro ao buscar a imagem:', error);
-            // Adicione uma lógica para lidar com o erro, como exibir uma mensagem ao usuário
-        }
-    };
+export default function GetStarScreen() {
+    const [starUrl, getStar, setGetStar, stars, star] = useState(null);
 
     useEffect(() => {
+        const fetchStarUrl = async () => {
+            const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
+            try {
+                const response = await axios.get(url);
+                console.log(response.data);
+
+                setGetStar(response.data)
+            } catch (error) {
+                console.error('Erro ao buscar a imagem:', error);
+            }
+        };
         fetchStarUrl();
     }, []);
 
     return (
-        <View>
-            <Text>Consultar Estrela do Dia</Text>
+        url.map((star)) => (
+
+            <View key={url.src} >
+
+           <Text> Consultar Estrela do Dia </Text>
+            
             <Button
                 onPress={fetchStarUrl}
                 title="Consultar galáxia do dia"
             />
-            {starUrl ? (
-                <Image
-                    source={{ uri: starUrl }}
-                    style={{
-                        flex: 1,
-                        width: '100%',
-                        height: 200,
-                    }}
-                />
-            ) : (
-                <Text>Carregando imagem...</Text>
-            )}
-        </View>
-    );
-};
 
-export default GetStarScreen;
+                <Image
+                    source={{ uri: url.hdurl }}
+                    style={{ width: "100%", maxWidth: 350, height: 50 }}
+                />
+                <Text> {url.title}</Text>
+        </View >
+        )
+    );
+}

@@ -48,7 +48,7 @@ import { View } from "react-native";
 const API_KEY = "sdo8bt1NUhNm1Al8F3vT54x2mcRdb3jZ8Peyed6n";
 
 export default function GetStarScreen() {
-    const [starUrl, getStar, setGetStar, stars, star] = useState(null);
+    const [starUrl, getStar, setGetStar, star] = useState(null);
 
     useEffect(() => {
         const fetchStarUrl = async () => {
@@ -66,7 +66,7 @@ export default function GetStarScreen() {
     }, []);
 
     return (
-        url.map((star)) => (
+        fetchStarUrl.map((star)) (
 
             <View key={url.src} >
 
@@ -78,10 +78,10 @@ export default function GetStarScreen() {
             />
 
                 <Image
-                    source={{ uri: url.hdurl }}
+                    source={{ uri: fetchStarUrl.hdurl }}
                     style={{ width: "100%", maxWidth: 350, height: 50 }}
                 />
-                <Text> {url.title}</Text>
+                <Text> {fetchStarUrl.title}</Text>
         </View >
         )
     );

@@ -82,6 +82,5 @@ export default function GetStarScreen() {
                 />
                 <Text> {fetchStarUrl.title}</Text>
         </View >
-        )
-    );
+        );
 }

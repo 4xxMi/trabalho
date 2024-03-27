@@ -45,10 +45,10 @@ import { Text, Button } from 'react-native-paper';
 import axios from 'axios';
 import { View } from "react-native";
 
-const API_KEY = "sdo8bt1NUhNm1Al8F3vT54x2mcRdb3jZ8Peyed6n";
+const API_KEY = "pejNGOqqTziOG8DJAzvt66hMwyG4boX0KUgQ0cus";
 
 export default function GetStarScreen() {
-    const [starUrl, getStar, setGetStar, star] = useState(null);
+    const [starUrl, getStar, setGetStar, star, fetchStarUrl] = useState();
 
     useEffect(() => {
         const fetchStarUrl = async () => {
@@ -66,8 +66,7 @@ export default function GetStarScreen() {
     }, []);
 
     return (
-        fetchStarUrl.map((star)) (
-
+            
             <View key={url.src} >
 
            <Text> Consultar Estrela do Dia </Text>
@@ -78,7 +77,7 @@ export default function GetStarScreen() {
             />
 
                 <Image
-                    source={{ uri: fetchStarUrl.hdurl }}
+                    source={{ uri:`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`  }}
                     style={{ width: "100%", maxWidth: 350, height: 50 }}
                 />
                 <Text> {fetchStarUrl.title}</Text>

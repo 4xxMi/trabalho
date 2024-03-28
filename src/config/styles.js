@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   walter: {
     color:"white", 
     fontSize: 16,
-    fontFamily: "com"
+    fontFamily: "Comic Sans MS"
   },
   Button: {
     color: "#5550B6",

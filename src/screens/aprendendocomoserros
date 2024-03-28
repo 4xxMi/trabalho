@@ -1,0 +1,57 @@
+// import { useState, useEffect } from "react"; // react andts do {}
+// import { Text, Button } from 'react-native-paper'; //
+// import axios from 'axios'; //
+// import { View } from "react-native";
+// import { Image, ImageBackground } from "expo-image"; //
+
+// const API_KEY = "pvTOTeZPuyM3KaN2lzEbfkGzfGcazK91W7BZZJSD";
+
+// export default function GetStarScreen() {
+//     const [getStar, setGetStar, fetchStarUrl] = useState(); // separa as variaveis
+//     const [imagemNasa, setImagemNasa] = useState(); //
+
+//     useEffect(() => { // nao é nexesario
+//         const fetchStarUrl = async () => {
+//             const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`// maldito ;
+//             try {
+//                 const response = await axios.get(url);
+//                 console.log(response.data);
+
+//                 setGetStar(response.data)
+//                 setImagemNasa(response.url)
+//             } catch (error) {
+//                 console.error('Erro ao buscar a imagem:', error);
+//             }
+//         };
+// /////// o useeffect avi aqui
+//         fetchStarUrl();
+//     }, []);
+
+//     return (
+
+//         <View >
+
+//             <Text> Consultar Estrela do Dia </Text>
+
+//             <Button
+//                 onPress={fetchStarUrl}
+//                 title="Consultar galáxia do dia"
+//             />
+//             {
+//                 imagemNasa && (
+//                     <Image
+//                         source={{ uri: imagemNasa }}
+//                         style={{ width: "100%", maxWidth: 350, height: 50 }}
+//             {/* <ImageBackground
+
+
+//                 source={{ uri: `https://picsum.photos/536/354` }}
+//                 style={{ width: "100%", maxWidth: 350, height: 50 }}
+//             /> */}
+//             <Text> {setGetStar?.title}</Text>
+//         </View >
+//     );
+// }             ></Image>
+//                 )
+//             }
+//        

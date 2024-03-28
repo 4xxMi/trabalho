@@ -1,4 +1,6 @@
 import { StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -6,6 +8,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  imageBackground: {
+    flex: 1,
+    width: "100%",
+    resizeMode: "cover", 
+},
+  walter: {
+    color:"white", 
+    fontSize: 16,
+    fontFamily: "com"
+  },
+  Button: {
+    color: "#5550B6",
+    fontWeight:"bold"
+  }
 });
 
 export default styles;

@@ -40,47 +40,54 @@
 //     );
 // }
 
-import { useState, useEffect } from "react";
-import { Text, Button } from 'react-native-paper';
-import axios from 'axios';
-import { View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Image } from "react-native";
+import { Text } from "react-native-paper";
+import axios from "axios";
+import styles from "../config/styles";
+import { ImageBackground } from "react-native";
 
-const API_KEY = "pejNGOqqTziOG8DJAzvt66hMwyG4boX0KUgQ0cus";
+const API_KEY = "pvTOTeZPuyM3KaN2lzEbfkGzfGcazK91W7BZZJSD";
 
 export default function GetStarScreen() {
-    const [starUrl, getStar, setGetStar, star, fetchStarUrl] = useState();
+    const [getStar, setGetStar] = useState(null);
+    const [imagemNasa, setImagemNasa] = useState(null);
+
+    const fetchStarUrl = async () => {
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
+        try {
+            const response = await axios.get(url);
+            console.log(response.data);
+
+            setGetStar(response.data);
+            setImagemNasa(response.data.url);
+        } catch (error) {
+            console.error("Erro ao buscar a imagem:", error);
+        }
+    };
 
     useEffect(() => {
-        const fetchStarUrl = async () => {
-            const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`
-            try {
-                const response = await axios.get(url);
-                console.log(response.data);
-
-                setGetStar(response.data)
-            } catch (error) {
-                console.error('Erro ao buscar a imagem:', error);
-            }
-        };
         fetchStarUrl();
     }, []);
 
     return (
-            
-            <View key={url.src} >
+        <ImageBackground
+            source={require("../../assets/galaxia.jpg")}
+            style={styles.imageBackground}
+        >
+            <View style={styles.container}>
 
-           <Text> Consultar Estrela do Dia </Text>
-            
-            <Button
-                onPress={fetchStarUrl}
-                title="Consultar galáxia do dia"
-            />
+                <Text style={styles.walter}> Galáxia fotografada no dia de hoje </Text>
+                {imagemNasa && (
+                    <Image
+                        source={{ uri: imagemNasa }}
+                        style={{ width: "100%", maxWidth: 350, height: 350 }}
+                    />
+                )}
+                <Text style={styles.walter}>{getStar?.title} </Text>
 
-                <Image
-                    source={{ uri:`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`  }}
-                    style={{ width: "100%", maxWidth: 350, height: 50 }}
-                />
-                <Text> {fetchStarUrl.title}</Text>
-        </View >
-        );
+
+            </View>
+        </ImageBackground>
+    );
 }

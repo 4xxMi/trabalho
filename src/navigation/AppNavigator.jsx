@@ -34,7 +34,7 @@ function TabNavigator() {
                 component={GetStarScreen}
                 options={{
                     title: "Get a Star",
-                    tabBarIcon: "information",
+                    tabBarIcon: "star",
                 }}
             />
         </Tab.Navigator>
